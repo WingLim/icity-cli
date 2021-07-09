@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/urfave/cli/v2"
@@ -18,6 +19,7 @@ func checkExist() bool {
 	_, err := os.Stat(iCityPath)
 	if err != nil {
 		if os.IsExist(err) {
+			fmt.Println("iCity has initialized")
 			return true
 		}
 		return false

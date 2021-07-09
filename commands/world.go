@@ -2,14 +2,13 @@ package commands
 
 import (
 	"fmt"
+	"log"
+	"time"
+
 	"github.com/manifoldco/promptui"
 	"github.com/urfave/cli/v2"
-	"log"
+	"github.com/xeonx/timeago"
 )
-
-func init() {
-
-}
 
 var WorldCommand = &cli.Command{
 	Name:  "world",
@@ -24,14 +23,18 @@ func getWorld() {
 	user := getUser()
 	diaries := user.GetWorld()
 
+	funcMap := promptui.FuncMap
+	funcMap["timeAgo"] = TimeAgo
+
 	templates := &promptui.SelectTemplates{
 		Label:    "{{ . }}: ",
-		Active:   "> {{ .Nickname }} {{ .Date }}",
-		Inactive: "  {{ .Nickname }} {{ .Date }}",
+		Active:   "> {{ .Nickname }} {{ .Date | timeAgo }}",
+		Inactive: "  {{ .Nickname }} {{ .Date | timeAgo }}",
 		Selected: "> {{ .Nickname }}",
+		FuncMap:  funcMap,
 		Details: `
 --------- Diary ----------
-{{ .Nickname }} {{ .Date }} {{ .Location }}
+{{ .Nickname }} {{ .Date | timeAgo }} {{ .Location }}
 {{ .Title }}
 {{ .Content }}
 `,
@@ -66,4 +69,8 @@ func getWorld() {
 			fmt.Println("comment failed")
 		}
 	}
+}
+
+func TimeAgo(date time.Time) string {
+	return timeago.Chinese.Format(date)
 }

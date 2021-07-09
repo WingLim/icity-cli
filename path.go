@@ -3,8 +3,9 @@ package main
 import "os/user"
 
 var (
-	home      = homePath()
-	iCityPath = home + "/.icity"
+	home        = homePath()
+	iCityPath   = home + "/.icity"
+	cookiesPath = iCityPath + "/cookies.json"
 )
 
 func homePath() string {

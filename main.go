@@ -10,12 +10,13 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Name = "icity"
-	app.Version = "0.0.1"
+	app.Version = "0.2.0"
 	app.UseShortOptionHandling = true
 
 	app.Commands = []*cli.Command{
 		initCommand,
 		loginCommand,
+		newCommand,
 	}
 
 	if err := app.Run(os.Args); err != nil {

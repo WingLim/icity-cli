@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"bufio"
@@ -11,7 +11,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var newCommand = &cli.Command{
+var NewCommand = &cli.Command{
 	Name:  "new",
 	Usage: "Post a new diary",
 	Action: func(context *cli.Context) error {

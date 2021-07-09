@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/WingLim/icity-cli/commands"
 	"github.com/urfave/cli/v2"
 )
 
@@ -14,9 +15,9 @@ func main() {
 	app.UseShortOptionHandling = true
 
 	app.Commands = []*cli.Command{
-		initCommand,
-		loginCommand,
-		newCommand,
+		commands.InitCommand,
+		commands.LoginCommand,
+		commands.NewCommand,
 	}
 
 	if err := app.Run(os.Args); err != nil {

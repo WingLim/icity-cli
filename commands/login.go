@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"bufio"
@@ -11,7 +11,7 @@ import (
 	"golang.org/x/crypto/ssh/terminal"
 )
 
-var loginCommand = &cli.Command{
+var LoginCommand = &cli.Command{
 	Name:  "login",
 	Usage: "Login to iCity",
 	Action: func(context *cli.Context) error {

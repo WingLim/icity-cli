@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var initCommand = &cli.Command{
+var InitCommand = &cli.Command{
 	Name:  "init",
 	Usage: "Init iCity directory",
 	Action: func(context *cli.Context) error {

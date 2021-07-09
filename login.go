@@ -50,3 +50,19 @@ func doLogin(context *cli.Context) *icity.User {
 	}
 	return user
 }
+
+func isLogin() (*icity.User, bool) {
+	user := icity.LoginWithCookies(cookiesPath)
+	if user != nil {
+		return user, true
+	}
+	fmt.Println("please use icity login to login")
+	return nil, false
+}
+
+func getUser() *icity.User {
+	if user, ok := isLogin(); ok {
+		return user
+	}
+	return nil
+}

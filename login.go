@@ -64,5 +64,6 @@ func getUser() *icity.User {
 	if user, ok := isLogin(); ok {
 		return user
 	}
+	os.Exit(1)
 	return nil
 }

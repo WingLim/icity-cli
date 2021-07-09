@@ -13,7 +13,9 @@ func main() {
 	app.Version = "0.0.1"
 	app.UseShortOptionHandling = true
 
-	app.Commands = []*cli.Command{}
+	app.Commands = []*cli.Command{
+		initCommand,
+	}
 
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)

@@ -26,7 +26,8 @@ var newCommand = &cli.Command{
 		&cli.StringFlag{
 			Name:        "privacy",
 			Aliases:     []string{"p"},
-			DefaultText: "Public",
+			Usage:       "Diary privacy, options are:\n \tpublic | friend | private",
+			DefaultText: "public",
 		},
 	},
 }

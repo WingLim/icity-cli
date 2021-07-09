@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	icity "github.com/WingLim/icity-sdk"
-	"github.com/urfave/cli/v2"
 	"os"
 	"strings"
+
+	icity "github.com/WingLim/icity-sdk"
+	"github.com/urfave/cli/v2"
 )
 
 var newCommand = &cli.Command{

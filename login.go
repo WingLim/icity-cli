@@ -13,7 +13,7 @@ import (
 
 var loginCommand = &cli.Command{
 	Name:  "login",
-	Usage: "login to iCity",
+	Usage: "Login to iCity",
 	Action: func(context *cli.Context) error {
 		user := doLogin(context)
 		if user == nil {

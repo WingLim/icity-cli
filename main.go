@@ -11,6 +11,7 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Name = "icity"
+	app.Usage = "An iCity command line interface client."
 	app.Version = "0.3.1"
 	app.UseShortOptionHandling = true
 

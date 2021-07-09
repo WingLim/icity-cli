@@ -8,7 +8,7 @@ import (
 
 var initCommand = &cli.Command{
 	Name:  "init",
-	Usage: "init icity diectory",
+	Usage: "init iCity directory",
 	Action: func(context *cli.Context) error {
 		return initCLI()
 	},

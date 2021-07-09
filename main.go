@@ -11,7 +11,7 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Name = "icity"
-	app.Version = "0.3.0"
+	app.Version = "0.3.1"
 	app.UseShortOptionHandling = true
 
 	app.Commands = []*cli.Command{

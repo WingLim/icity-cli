@@ -1,10 +1,10 @@
 package commands
 
 import (
-	"bufio"
 	"errors"
 	"fmt"
-	"os"
+	"github.com/manifoldco/promptui"
+	"log"
 	"strings"
 
 	icity "github.com/WingLim/icity-sdk"
@@ -49,12 +49,23 @@ func newDiary(context *cli.Context) bool {
 	p := context.String("privacy")
 	privacy := convertPrivacy(p)
 
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Title: ")
-	title, _ := reader.ReadString('\n')
+	titleInput := promptui.Prompt{
+		Label: "Title",
+	}
+	title, err := titleInput.Run()
+	if err != nil {
+		log.Fatal(err)
+		return false
+	}
 
-	fmt.Print("Content: ")
-	content, _ := reader.ReadString('\n')
+	contentInput := promptui.Prompt{
+		Label: "Content",
+	}
+	content, err := contentInput.Run()
+	if err != nil {
+		log.Fatal(err)
+		return false
+	}
 
 	resp := user.NewDiary(title, content, privacy)
 	return resp.Success

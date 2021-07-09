@@ -1,14 +1,14 @@
 package commands
 
 import (
-	"bufio"
 	"errors"
 	"fmt"
+	"log"
 	"os"
 
 	icity "github.com/WingLim/icity-sdk"
+	"github.com/manifoldco/promptui"
 	"github.com/urfave/cli/v2"
-	"golang.org/x/crypto/ssh/terminal"
 )
 
 var LoginCommand = &cli.Command{
@@ -38,13 +38,24 @@ func doLogin(context *cli.Context) *icity.User {
 	if configPath != "" {
 		user = icity.LoginWithConfig(configPath, icity.WithSaveCookies(cookiesPath))
 	} else {
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("Username: ")
-		username, _ := reader.ReadString('\n')
+		usernameInput := promptui.Prompt{
+			Label: "Username",
+		}
+		username, err := usernameInput.Run()
+		if err != nil {
+			log.Fatal(err)
+			return nil
+		}
 
-		fmt.Print("Password: ")
-		bytePassword, _ := terminal.ReadPassword(0)
-		password := string(bytePassword)
+		passwordInput := promptui.Prompt{
+			Label: "Password",
+			Mask:  '*',
+		}
+		password, err := passwordInput.Run()
+		if err != nil {
+			log.Fatal(err)
+			return nil
+		}
 
 		user = icity.Login(username, password, icity.WithSaveCookies(cookiesPath))
 	}

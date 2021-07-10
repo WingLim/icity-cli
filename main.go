@@ -12,7 +12,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "icity"
 	app.Usage = "An iCity command line interface client."
-	app.Version = "0.3.2"
+	app.Version = "0.4.0"
 	app.UseShortOptionHandling = true
 
 	app.Commands = []*cli.Command{
@@ -20,6 +20,7 @@ func main() {
 		commands.LoginCommand,
 		commands.NewCommand,
 		commands.WorldCommand,
+		commands.FriendsCommand,
 	}
 
 	if err := app.Run(os.Args); err != nil {

@@ -6,21 +6,22 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var WorldCommand = &cli.Command{
-	Name:  "world",
-	Usage: "Browser diaries in iCity world",
+var FriendsCommand = &cli.Command{
+	Name:  "friends",
+	Usage: "Browser your friend diaries in iCity",
 	Action: func(context *cli.Context) error {
-		getWorld()
+		clear()
+		getFriends()
 		return nil
 	},
 }
 
-func getWorld() {
+func getFriends() {
 	fmt.Println("getting diaries...")
 	clear()
 
 	user := getUser()
-	diaries := user.GetWorld()
+	diaries := user.GetFriends()
 
 	browseDiaries(user, "World", diaries)
 }

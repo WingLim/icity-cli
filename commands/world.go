@@ -2,18 +2,16 @@ package commands
 
 import (
 	"fmt"
-	"log"
-	"time"
-
 	"github.com/manifoldco/promptui"
 	"github.com/urfave/cli/v2"
-	"github.com/xeonx/timeago"
+	"log"
 )
 
 var WorldCommand = &cli.Command{
 	Name:  "world",
 	Usage: "Browser diaries in iCity world",
 	Action: func(context *cli.Context) error {
+		clear()
 		getWorld()
 		return nil
 	},
@@ -23,27 +21,15 @@ func getWorld() {
 	user := getUser()
 	diaries := user.GetWorld()
 
-	funcMap := promptui.FuncMap
-	funcMap["timeAgo"] = TimeAgo
+	var cursorPos int
 
-	templates := &promptui.SelectTemplates{
-		Label:    "{{ . }}: ",
-		Active:   "> {{ .Nickname }} {{ .Date | timeAgo }}",
-		Inactive: "  {{ .Nickname }} {{ .Date | timeAgo }}",
-		Selected: "> {{ .Nickname }}",
-		FuncMap:  funcMap,
-		Details: `
---------- Diary ----------
-{{ .Nickname }} {{ .Date | timeAgo }} {{ .Location }}
-{{ .Title }}
-{{ .Content }}
-`,
-	}
-
+browse:
 	worldBrowse := promptui.Select{
 		Label:     "World",
 		Items:     diaries,
+		CursorPos: cursorPos,
 		Templates: templates,
+		Stdout:    &bellSkipper{},
 	}
 
 	index, _, err := worldBrowse.Run()
@@ -68,9 +54,8 @@ func getWorld() {
 		} else {
 			fmt.Println("comment failed")
 		}
+		clear()
+		cursorPos = index
+		goto browse
 	}
-}
-
-func TimeAgo(date time.Time) string {
-	return timeago.Chinese.Format(date)
 }

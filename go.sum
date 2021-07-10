@@ -1,8 +1,8 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/PuerkitoBio/goquery v1.7.0 h1:O5SP3b9JWqMSVMG69zMfj577zwkSNpxrFf7ybS74eiw=
 github.com/PuerkitoBio/goquery v1.7.0/go.mod h1:GsLWisAFVj4WgDibEWF4pvYnkVQBpKBKeU+7zCJoLcc=
-github.com/WingLim/icity-sdk v0.10.0 h1:ZoYkPeHkVZjMSpW1vErtH40TM3hDGrU1VcOH4rBBPuM=
-github.com/WingLim/icity-sdk v0.10.0/go.mod h1:1Fdn3BbNrG343uJH0IVa3Hx/MkAZY6putsrJyMYjNh4=
+github.com/WingLim/icity-sdk v0.10.3 h1:qZtTHuzpenrCr24uqraR1guMDu2+545ZzC5618DfmdY=
+github.com/WingLim/icity-sdk v0.10.3/go.mod h1:1Fdn3BbNrG343uJH0IVa3Hx/MkAZY6putsrJyMYjNh4=
 github.com/andybalholm/cascadia v1.1.0/go.mod h1:GsXiBklL0woXo1j/WYWtSYYC4ouU9PqHO0sqidkEA4Y=
 github.com/andybalholm/cascadia v1.2.0 h1:vuRCkM5Ozh/BfmsaTm26kbjm0mIOM3yS5Ek/F5h18aE=
 github.com/andybalholm/cascadia v1.2.0/go.mod h1:YCyR8vOZT9aZ1CHEd8ap0gMVm2aFgxBp0T0eFw1RUQY=
